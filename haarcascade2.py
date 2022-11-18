@@ -1,7 +1,7 @@
 import cv2
 from PIL import Image
 
-original_face_img = "images/pasted_face_img1.png"
+original_face_img = "images/face_img.png"
 original_eye_img = "images/eye_img.png"
 
 
@@ -37,8 +37,8 @@ def paste_img(face_list):
     # 画像の貼り付けはPillowを使用した方がシンプルで簡単なのでこちらを使用します
     face_img.paste(new_mask_img, (x, y), new_mask_img.split()[3])
 
-    # フォルダの中に保存される
     face_img.save("images/pasted_face_img.png")
+
 
 
 def paste_img2(face_list):
@@ -50,7 +50,8 @@ def paste_img2(face_list):
     print(x, y, w, h)
 
     # Pillowで画像を開く
-    face_img = Image.open(original_face_img)
+    original_face2_img ="images/pasted_face_img.png"
+    face_img = Image.open(original_face2_img)
     mask_img = Image.open(original_eye_img)
 
     # 顔に合ったサイズに画像をリサイズしてフォルダに保存
@@ -62,7 +63,7 @@ def paste_img2(face_list):
     face_img.paste(new_mask_img, (x, y), new_mask_img.split()[3])
 
     # フォルダの中に保存される
-    face_img.save("images/pasted_face_img1.png")
+    face_img.save("images/pasted_face_img.png")
 
 
 face_list = find_face()
